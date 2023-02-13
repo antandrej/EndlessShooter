@@ -22,7 +22,7 @@ public class Crosshair : MonoBehaviour
             {
                 if (hit.transform.gameObject.tag == "Enemy")
                 {
-                    hit.transform.gameObject.GetComponent<EnemyController>().health -= Random.Range(40, 60);
+                    hit.transform.gameObject.GetComponent<EnemyController>().health -= Random.Range(30, 40);
                 }
             }
         }

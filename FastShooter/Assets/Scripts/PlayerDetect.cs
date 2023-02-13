@@ -35,7 +35,7 @@ public class PlayerDetect : MonoBehaviour
         {
             timeToShoot -= Time.deltaTime;
 
-            if (timeToShoot < 0)
+            if (timeToShoot < 0 && target.GetComponent<PlayerController>().isAlive)
             {
                 ShootPlayer();
                 timeToShoot = originalTime;
@@ -56,7 +56,7 @@ public class PlayerDetect : MonoBehaviour
     {
         GameObject currentBullet = Instantiate(bullet, shootPoint.position, shootPoint.rotation);
         Rigidbody rb = currentBullet.GetComponent<Rigidbody>();
-        Destroy(currentBullet, 2f);
+        Destroy(currentBullet, 1.25f);
         rb.AddForce(transform.forward * shootSpeed, ForceMode.VelocityChange);
     }
 }

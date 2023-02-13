@@ -10,9 +10,11 @@ public class PlayerController : MonoBehaviour
     public float maxHealth = 100;
     public float currentHealth = 100;
 
+    public bool isAlive;
+
     void Start()
     {
-
+        isAlive = true;
     }
 
     void Update()
@@ -20,6 +22,7 @@ public class PlayerController : MonoBehaviour
         if (currentHealth <= 0)
         {
             this.gameObject.SetActive(false);
+            isAlive = false;
         }
     }
 
