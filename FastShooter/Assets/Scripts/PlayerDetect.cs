@@ -25,7 +25,7 @@ public class PlayerDetect : MonoBehaviour
         if (detected)
         {
             //enemy.LookAt(target.transform.position);
-            enemy.LookAt(target.transform.position + new Vector3(Random.Range(-1, -1), 0, Random.Range(-1, -1)));
+            enemy.LookAt(target.transform.position + new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1)));
         }
     }
 

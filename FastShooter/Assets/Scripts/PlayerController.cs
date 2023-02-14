@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public GameObject crosshair;
+
     public float speed = 10;
     public float strafeSpeed = 10;
 
@@ -19,6 +21,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        //transform.LookAt(new Vector3(crosshair.transform.position.x, transform.position.y, transform.position.z));
         if (currentHealth <= 0)
         {
             this.gameObject.SetActive(false);
