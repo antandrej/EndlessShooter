@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
+    public Crosshair crosshair;
 
     void Start()
     {
-        
+
     }
 
     void Update()

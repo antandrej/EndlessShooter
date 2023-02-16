@@ -14,6 +14,8 @@ public class Crosshair : MonoBehaviour
     Vector3 mousePos;
     Vector3 aim;
 
+    public RaycastHit hit;
+
     void Start()
     {
         Cursor.visible = false;
@@ -29,35 +31,36 @@ public class Crosshair : MonoBehaviour
         //shootPoint.transform.LookAt(pointingTarget, Vector3.back);
         //Debug.DrawLine(shootPoint.transform.position, this.transform.position, Color.red);
 
-        mousePos = Input.mousePosition;
-        aim = Camera.main.ScreenToWorldPoint(mousePos);
+        //mousePos = Input.mousePosition;
+        //aim = Camera.main.ScreenToWorldPoint(mousePos);
 
         if (Input.GetMouseButtonDown(0))
         {
-            //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             //RaycastHit hit;
-            //if (Physics.Raycast(ray, out hit))
-            //{
-            //if (timeToShoot < 0)
-            //{
-            //Debug.Log(hit.point);
-            shootPoint.transform.LookAt(aim);
-            GameObject currentBullet = Instantiate(bullet, shootPoint.position, Quaternion.identity);
-            currentBullet.transform.LookAt(aim);
-            Debug.Log("metak");
-            Rigidbody rb = currentBullet.GetComponent<Rigidbody>();
-            Destroy(currentBullet, 1.25f);
-            //rb.AddForce(hit.point * shootSpeed, ForceMode.VelocityChange);
-            rb.AddRelativeForce(-transform.forward * shootSpeed);
-            //timeToShoot = originalTime;
-            //}
-            /*
-            if (hit.transform.gameObject.tag == "Enemy")
+            if (Physics.Raycast(ray, out hit))
             {
-                //hit.transform.gameObject.GetComponent<EnemyController>().health -= Random.Range(30, 40);  --- U BULLET CONTROLLERU JE ~~~ VRATI OVDE
+                //if (timeToShoot < 0)
+                //{
+                //Debug.Log(hit.point);
+                //shootPoint.transform.LookAt(mousePos);
+                GameObject currentBullet = Instantiate(bullet, shootPoint.position, Quaternion.identity);
+                //currentBullet.transform.LookAt(mousePos);
+                Debug.Log("metak");
+                Rigidbody rb = currentBullet.GetComponent<Rigidbody>();
+                Destroy(currentBullet, 1.25f);
+                //rb.AddForce(hit.point * shootSpeed, ForceMode.VelocityChange);
+                //currentBullet.transform.position = Vector3.MoveTowards(shootPoint.transform.position, hit.point, shootSpeed * Time.deltaTime);
+                currentBullet.transform.position = Vector3.Lerp(shootPoint.transform.position, hit.point, shootSpeed * Time.deltaTime);
+                //timeToShoot = originalTime;
+                //}
+                /*
+                if (hit.transform.gameObject.tag == "Enemy")
+                {
+                    //hit.transform.gameObject.GetComponent<EnemyController>().health -= Random.Range(30, 40);  --- U BULLET CONTROLLERU JE ~~~ VRATI OVDE
+                }
+                */
             }
-            */
-            //}
         }
     }
 }

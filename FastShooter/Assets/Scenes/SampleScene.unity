@@ -449,7 +449,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 329106295}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.669, y: 0, z: 1.623}
+  m_LocalPosition: {x: 0.698, y: 0, z: 0.422}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 198445930}
@@ -1350,7 +1350,7 @@ GameObject:
   - component: {fileID: 2007490138}
   m_Layer: 5
   m_Name: Crosshair
-  m_TagString: Untagged
+  m_TagString: Crosshair
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1372,7 +1372,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 32, y: 32}
+  m_SizeDelta: {x: 16, y: 16}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2007490138
 MonoBehaviour:
@@ -1386,9 +1386,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76f8d9ca37748aa4aae362aebe0f06cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 3673730073023381949, guid: add5472856a889a449e9c8169c5d4e17, type: 3}
+  bullet: {fileID: 3673730073023381949, guid: 225855cef5110f840b26b344b82eb3ff, type: 3}
   shootPoint: {fileID: 329106296}
-  shootSpeed: 5000
+  shootSpeed: 500
 --- !u!114 &2007490139
 MonoBehaviour:
   m_ObjectHideFlags: 0
