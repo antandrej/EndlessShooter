@@ -1386,7 +1386,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76f8d9ca37748aa4aae362aebe0f06cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 3673730073023381949, guid: 225855cef5110f840b26b344b82eb3ff, type: 3}
+  bullet: {fileID: 3673730073023381949, guid: add5472856a889a449e9c8169c5d4e17, type: 3}
   shootPoint: {fileID: 329106296}
   shootSpeed: 500
 --- !u!114 &2007490139
