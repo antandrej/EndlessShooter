@@ -14,8 +14,6 @@ public class Crosshair : MonoBehaviour
     Vector3 mousePos;
     Vector3 aim;
 
-    public RaycastHit hit;
-
     void Start()
     {
         Cursor.visible = false;
@@ -26,40 +24,21 @@ public class Crosshair : MonoBehaviour
     {
         this.transform.position = Input.mousePosition;
 
-        //shootPoint.transform.LookAt(Input.mousePosition);
-        //pointingTarget = Camera.main.ScreenToWorldPoint(Input.mousePosition + Vector3.back * Camera.main.transform.position.z);
-        //shootPoint.transform.LookAt(pointingTarget, Vector3.back);
-        //Debug.DrawLine(shootPoint.transform.position, this.transform.position, Color.red);
-
-        //mousePos = Input.mousePosition;
-        //aim = Camera.main.ScreenToWorldPoint(mousePos);
 
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            //RaycastHit hit;
+            RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
                 //if (timeToShoot < 0)
                 //{
-                //Debug.Log(hit.point);
-                //shootPoint.transform.LookAt(mousePos);
-                GameObject currentBullet = Instantiate(bullet, shootPoint.position, Quaternion.identity);
-                //currentBullet.transform.LookAt(mousePos);
-                Debug.Log("metak");
-                Rigidbody rb = currentBullet.GetComponent<Rigidbody>();
-                Destroy(currentBullet, 1.25f);
-                //rb.AddForce(hit.point * shootSpeed, ForceMode.VelocityChange);
-                //currentBullet.transform.position = Vector3.MoveTowards(shootPoint.transform.position, hit.point, shootSpeed * Time.deltaTime);
-                currentBullet.transform.position = Vector3.Lerp(shootPoint.transform.position, hit.point, shootSpeed * Time.deltaTime);
                 //timeToShoot = originalTime;
-                //}
-                /*
                 if (hit.transform.gameObject.tag == "Enemy")
                 {
-                    //hit.transform.gameObject.GetComponent<EnemyController>().health -= Random.Range(30, 40);  --- U BULLET CONTROLLERU JE ~~~ VRATI OVDE
-                }
-                */
+                    hit.transform.gameObject.GetComponent<EnemyController>().health -= Random.Range(30, 40);
+                }   
+                //}
             }
         }
     }
