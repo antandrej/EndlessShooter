@@ -6,6 +6,7 @@ public class Crosshair : MonoBehaviour
 {
     public GameObject bullet;
     public Transform shootPoint;
+    public GameObject player;
 
     public float shootSpeed = 10f;
     //public float timeToShoot = 1.3f;
@@ -24,21 +25,23 @@ public class Crosshair : MonoBehaviour
     {
         this.transform.position = Input.mousePosition;
 
-
-        if (Input.GetMouseButtonDown(0))
+        if (player.GetComponent<PlayerController>().isAlive)
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit))
+            if (Input.GetMouseButtonDown(0))
             {
-                //if (timeToShoot < 0)
-                //{
-                //timeToShoot = originalTime;
-                if (hit.transform.gameObject.tag == "Enemy")
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+                if (Physics.Raycast(ray, out hit))
                 {
-                    hit.transform.gameObject.GetComponent<EnemyController>().health -= Random.Range(30, 40);
-                }   
-                //}
+                    //if (timeToShoot < 0)
+                    //{
+                    //timeToShoot = originalTime;
+                    if (hit.transform.gameObject.tag == "Enemy")
+                    {
+                        hit.transform.gameObject.GetComponent<EnemyController>().health -= Random.Range(30, 40);
+                    }
+                    //}
+                }
             }
         }
     }

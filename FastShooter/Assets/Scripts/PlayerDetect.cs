@@ -8,8 +8,8 @@ public class PlayerDetect : MonoBehaviour
     GameObject target;
     public Transform enemy;
 
-    public GameObject bullet;
-    public Transform shootPoint;
+    //public GameObject bullet;
+    //public Transform shootPoint;
 
     public float shootSpeed = 10f;
     public float timeToShoot = 1.3f;
@@ -24,8 +24,8 @@ public class PlayerDetect : MonoBehaviour
     {
         if (detected)
         {
-            //enemy.LookAt(target.transform.position);
-            enemy.LookAt(target.transform.position + new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1)));
+            enemy.LookAt(target.transform.position);
+            //enemy.LookAt(target.transform.position + new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1)));
         }
     }
 
@@ -54,9 +54,13 @@ public class PlayerDetect : MonoBehaviour
 
     private void ShootPlayer()
     {
+        /*
         GameObject currentBullet = Instantiate(bullet, shootPoint.position, shootPoint.rotation);
         Rigidbody rb = currentBullet.GetComponent<Rigidbody>();
         Destroy(currentBullet, 1.25f);
         rb.AddForce(transform.forward * shootSpeed, ForceMode.VelocityChange);
+        */
+        target.GetComponent<PlayerController>().currentHealth -= Random.Range(15, 25);
+        Debug.Log("shoot" + gameObject);
     }
 }

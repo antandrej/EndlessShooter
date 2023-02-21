@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
         Vector3 movement = new Vector3(x, 0, 0);
         transform.Translate(movement * strafeSpeed * Time.deltaTime);
     }
-
+    /*
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Bullet")
@@ -45,4 +45,5 @@ public class PlayerController : MonoBehaviour
             Destroy(collision.gameObject);
         }
     }
+    */
 }
