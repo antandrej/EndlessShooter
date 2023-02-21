@@ -12,12 +12,16 @@ public class Crosshair : MonoBehaviour
     //public float timeToShoot = 1.3f;
     //float originalTime;
 
-    Vector3 mousePos;
-    Vector3 aim;
+    //Vector3 mousePos;
+    //Vector3 aim;
+
+    public int maxAmmo = 17;
+    public int currentAmmo;
 
     void Start()
     {
         Cursor.visible = false;
+        currentAmmo = maxAmmo;
         //originalTime = timeToShoot;
     }
 
@@ -36,9 +40,10 @@ public class Crosshair : MonoBehaviour
                     //if (timeToShoot < 0)
                     //{
                     //timeToShoot = originalTime;
-                    if (hit.transform.gameObject.tag == "Enemy")
+                    if (hit.transform.gameObject.tag == "Enemy" && Vector3.Distance(shootPoint.transform.position, hit.transform.position) <= 50)
                     {
                         hit.transform.gameObject.GetComponent<EnemyController>().health -= Random.Range(30, 40);
+                        hit.transform.gameObject.GetComponent<EnemyController>().hit = true;
                     }
                     //}
                 }

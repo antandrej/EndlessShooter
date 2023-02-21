@@ -39,6 +39,7 @@ public class PlayerDetect : MonoBehaviour
             {
                 ShootPlayer();
                 timeToShoot = originalTime;
+                //Debug.Log(Vector3.Distance(enemy.position, target.transform.position));
             }
         }
     }
@@ -52,6 +53,15 @@ public class PlayerDetect : MonoBehaviour
         }
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            detected = false;
+            target = other.gameObject;
+        }
+    }
+
     private void ShootPlayer()
     {
         /*
@@ -60,7 +70,30 @@ public class PlayerDetect : MonoBehaviour
         Destroy(currentBullet, 1.25f);
         rb.AddForce(transform.forward * shootSpeed, ForceMode.VelocityChange);
         */
-        target.GetComponent<PlayerController>().currentHealth -= Random.Range(15, 25);
-        Debug.Log("shoot" + gameObject);
+        if (Vector3.Distance(enemy.position, target.transform.position) >= 20)
+        {
+            if (Random.Range(1, 4) == 1)
+            {
+                target.GetComponent<PlayerController>().currentHealth -= Random.Range(15, 25);
+                Debug.Log("far hit");
+
+            }
+            else
+            {
+                Debug.Log("far miss");
+            }
+        }
+        else if (Vector3.Distance(enemy.position, target.transform.position) < 20)
+        {
+            if (Random.Range(1, 3) == 1)
+            {
+                target.GetComponent<PlayerController>().currentHealth -= Random.Range(15, 25);
+                Debug.Log("near hit");
+            }
+            else
+            {
+                Debug.Log("near miss");
+            }
+        }
     }
 }
