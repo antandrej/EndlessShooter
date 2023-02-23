@@ -5,17 +5,24 @@ using UnityEngine;
 public class CameraMovement : MonoBehaviour
 {
     public Transform playerPosition;
+    public Transform crosshair;
+
     private Vector3 offset;
 
-    // Start is called before the first frame update
+
     void Start()
     {
         offset = new Vector3(0, 5.5f, -13);
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         this.transform.position = playerPosition.position + offset;
+    }
+
+    private void LateUpdate()
+    {
+        //transform.LookAt(crosshair);
     }
 }

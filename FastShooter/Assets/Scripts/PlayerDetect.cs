@@ -12,6 +12,7 @@ public class PlayerDetect : MonoBehaviour
     //public Transform shootPoint;
 
     public float shootSpeed = 10f;
+
     public float timeToShoot = 1.3f;
     float originalTime;
 
@@ -58,19 +59,12 @@ public class PlayerDetect : MonoBehaviour
         if (other.tag == "Player")
         {
             detected = false;
-            target = other.gameObject;
         }
     }
 
     private void ShootPlayer()
     {
-        /*
-        GameObject currentBullet = Instantiate(bullet, shootPoint.position, shootPoint.rotation);
-        Rigidbody rb = currentBullet.GetComponent<Rigidbody>();
-        Destroy(currentBullet, 1.25f);
-        rb.AddForce(transform.forward * shootSpeed, ForceMode.VelocityChange);
-        */
-        if (Vector3.Distance(enemy.position, target.transform.position) >= 20)
+        if (Vector3.Distance(enemy.position, target.transform.position) >= 35)
         {
             if (Random.Range(1, 4) == 1)
             {
@@ -83,7 +77,7 @@ public class PlayerDetect : MonoBehaviour
                 Debug.Log("far miss");
             }
         }
-        else if (Vector3.Distance(enemy.position, target.transform.position) < 20)
+        else if (Vector3.Distance(enemy.position, target.transform.position) < 35)
         {
             if (Random.Range(1, 3) == 1)
             {
